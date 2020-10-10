@@ -1,0 +1,13 @@
+{
+  "name": "bijing",
+  "version": "1.0.0",
+  "description": "Binusmaya API client wrapper",
+  "main": "index.js",
+  "repository": "https://github.com/werdna521/bijing.git",
+  "author": "Stanley <angstanley68@gmail.com>",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "axios": "^0.20.0",
+    "enkerip": "^1.0.2"
+  }
+}
