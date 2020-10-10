@@ -2,6 +2,7 @@ const Auth = require('./adapters/auth')
 const Api = require('./adapters/api')
 const Enkerip = require('enkerip')
 const Request = require('./helpers/request')
+const axios = require('axios');
 const AVAILABLE_ADAPTERS = { auth: Auth, api: Api }
 
 class Bijing {
@@ -32,7 +33,9 @@ class Bijing {
             padLength: 32,
         })
 
+        // * plugin and mixin installation
         this.$request = new Request(enkerip)
+        this.$axios = axios.create({ baseURL: this.$options.baseUrl })
     }
 
     useAdapter (name = {}) {
