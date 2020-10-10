@@ -13,5 +13,5 @@ module.exports = {
 
     isBlank: (obj) => {
         return (typeof obj === 'undefined') || (obj === null) || (obj === '')
-    }
+    },
 }
