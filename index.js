@@ -38,8 +38,8 @@ class Bijing {
         this.$axios = axios.create({ baseURL: this.$options.baseUrl })
     }
 
-    useAdapter (name = {}) {
-        this[name] = new AVAILABLE_ADAPTERS[name](this)
+    useAdapter (name, options = {}) {
+        this[name] = new AVAILABLE_ADAPTERS[name](this, options)
         return this[name].registerAdapter()
     }
 }
