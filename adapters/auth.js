@@ -1,9 +1,9 @@
-const axios = require('axios')
 const { isBlank } = require('./util')
 
 const OAUTH_TOKEN_PATH = '/oauth2/adapi/token';
 
 class Auth {
+
     constructor(client) {
         this.client = client
     }
@@ -19,18 +19,15 @@ class Auth {
             throw new Error('Please set valid `email` and `password`')
         }
 
-        return new Promise(((resolve, reject) => {
-            this.userAuth(email, password).then(response => {
-                resolve(response.data)
-            }).catch(e => {
-                reject(e)
+        return this.userAuth(email, password)
+            .then(response => response.data)
+            .catch(err => {
+                throw new Error(err.response.data.error_description)
             })
-        }))
     }
 
     userAuth(email, password) {
-        return axios.post(
-            `${this.client.$options.baseUrl}${OAUTH_TOKEN_PATH}`, 
+        return this.client.$axios.post(OAUTH_TOKEN_PATH, 
             this.client.$request.formdata({ 
                 username: email,
                 password,
