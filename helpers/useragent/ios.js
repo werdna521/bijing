@@ -31,7 +31,7 @@ class IosUserAgentList {
         this.iosVersion = options.iosVersion
         this.safariBuildVersion = this.iosList[options.iosVersion]
 
-        this.binusVersion = options.binusVersion
+        this.binusVersion = options.binusVersion || "1.13.0"
     }
     toString(){
         // Detect the uaType
