@@ -36,8 +36,8 @@ class IosUserAgentList {
     toString(){
         // Detect the uaType
         switch (this.uaType){
-            case "safari": return `Mozilla/5.0 (iPhone; CPU iPhone OS ${options.iosVersion.replace('.', '_')} like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/${options.iosVersion} Mobile/${options.safariBuildVersion} Safari/604.1`
-            case "binus": return `BINUS Student/${this.binusVersion} (com.binus-itdivision.mobilestudent; build:1; iOS ${options.iosVersion}) Alamofire/5.0.0`
+            case "safari": return `Mozilla/5.0 (iPhone; CPU iPhone OS ${this.iosVersion.replace('.', '_')} like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/${this.iosVersion} Mobile/${this.safariBuildVersion} Safari/604.1`
+            case "binus": return `BINUS Student/${this.binusVersion} (com.binus-itdivision.mobilestudent; build:1; iOS ${this.iosVersion}) Alamofire/5.0.0`
         }
     }
 }
