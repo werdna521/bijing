@@ -2,6 +2,7 @@ const Auth = require('./adapters/auth')
 const Api = require('./adapters/api')
 const Enkerip = require('enkerip')
 const Request = require('./helpers/request')
+const UserAgentHandler = require('./helpers/useragent/handler')
 const axios = require('axios');
 const AVAILABLE_ADAPTERS = { auth: Auth, api: Api }
 
@@ -35,7 +36,12 @@ class Bijing {
 
         // * plugin and mixin installation
         this.$request = new Request(enkerip)
-        this.$axios = axios.create({ baseURL: this.$options.baseUrl })
+        this.$axios = axios.create({
+            baseURL: this.$options.baseUrl,
+            headers: {
+                'User-Agent': new UserAgentHandler().getIosUserAgent()
+            }
+        })
     }
 
     useAdapter (name, options = {}) {
