@@ -1,10 +1,11 @@
 const Auth = require('./adapters/auth')
 const Api = require('./adapters/api')
 const Enkerip = require('enkerip')
+const Laboratory = require('./adapters/laboratory')
 const Request = require('./helpers/request')
 const UserAgentHandler = require('./helpers/useragent/handler')
 const axios = require('axios');
-const AVAILABLE_ADAPTERS = { auth: Auth, api: Api }
+const AVAILABLE_ADAPTERS = { auth: Auth, api: Api, laboratory: Laboratory}
 
 class Bijing {
     constructor(options = {}) {
@@ -39,7 +40,7 @@ class Bijing {
         this.$axios = axios.create({
             baseURL: this.$options.baseUrl,
             headers: {
-                'User-Agent': new UserAgentHandler().getIosUserAgent()
+                'User-Agent': new UserAgentHandler().getIosUserAgent({})
             }
         })
     }
