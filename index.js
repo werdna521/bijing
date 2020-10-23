@@ -4,7 +4,7 @@ const Enkerip = require('enkerip')
 const Request = require('./helpers/request')
 const UserAgentHandler = require('./helpers/useragent/handler')
 const axios = require('axios');
-const AVAILABLE_ADAPTERS = { auth: Auth, api: Api}
+const AVAILABLE_ADAPTERS = { auth: Auth, api: Api }
 
 class Bijing {
     constructor(options = {}) {
