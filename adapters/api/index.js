@@ -1,5 +1,6 @@
 const { isBlank } = require('../util')
 const Assignment = require('./Assignment')
+const Student = require('./Student')
 const User = require('./User')
 
 class Api {
@@ -39,6 +40,7 @@ class Api {
 
     // * install sub-adapters
     this.assignment = new Assignment(client, options)
+    this.student = new Student(client, options)
     this.user = new User(client, options)
   }
 
