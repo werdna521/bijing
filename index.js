@@ -1,11 +1,10 @@
 const Auth = require('./adapters/auth')
 const Api = require('./adapters/api')
 const Enkerip = require('enkerip')
-const Laboratory = require('./adapters/laboratory')
 const Request = require('./helpers/request')
 const UserAgentHandler = require('./helpers/useragent/handler')
 const axios = require('axios');
-const AVAILABLE_ADAPTERS = { auth: Auth, api: Api, laboratory: Laboratory}
+const AVAILABLE_ADAPTERS = { auth: Auth, api: Api}
 
 class Bijing {
     constructor(options = {}) {
