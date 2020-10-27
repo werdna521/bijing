@@ -39,7 +39,7 @@ class Bijing {
         this.$axios = axios.create({
             baseURL: this.$options.baseUrl,
             headers: {
-                'User-Agent': new UserAgentHandler().getIosUserAgent()
+                'User-Agent': new UserAgentHandler().getIosUserAgent({})
             }
         })
     }
