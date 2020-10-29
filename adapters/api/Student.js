@@ -103,10 +103,9 @@ class Student {
     let requestBody = this.client.$request.json({
       BinusianID: binusianId,
       acadCareer,
-      emplId
-    })
-
-    requestBody.roleID = roleID
+      emplId,
+      roleID
+    }, ["roleID"])
 
     return this.client.$axios.post(API_PATH,
       requestBody,
