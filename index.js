@@ -3,6 +3,8 @@ const Api = require('./adapters/api')
 const Enkerip = require('enkerip')
 const HTTP = require('./helpers/http');
 const Request = require('./helpers/request')
+const Stash = require('./helpers/stash')
+
 const AVAILABLE_ADAPTERS = {
   auth: Auth,
   api: Api
@@ -39,10 +41,11 @@ class Bijing {
     // * plugin and mixin installation
     this.$request = new Request(enkerip)
     this.$http = new HTTP(this.$options.baseURL)
+    this.$stash = new Stash()
   }
 
-  useAdapter(name, options = {}) {
-    this[name] = new AVAILABLE_ADAPTERS[name](this, options)
+  useAdapter(name) {
+    this[name] = new AVAILABLE_ADAPTERS[name](this)
     return this[name].registerAdapter()
   }
 }

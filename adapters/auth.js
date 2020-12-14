@@ -1,11 +1,12 @@
 const Adapter = require('./Adapter')
 
-const OAUTH_TOKEN_PATH = '/oauth2/adapi/token';
+const BASE_URL = '/oauth2/adapi/token';
 
 class Auth extends Adapter {
 
   constructor(client) {
     super(client)
+    this.baseURL = BASE_URL
   }
 
   login({
@@ -24,7 +25,11 @@ class Auth extends Adapter {
       grant_type: 'password',
     }, ['client_type', 'grant_type'])
 
-    return this.client.$http.post(OAUTH_TOKEN_PATH, requestBody)
+    return this.client.$http.post(this.url(''), requestBody)
+      .then(res => {
+        this.client.$stash.storeAccessToken(res['access_token'])
+        return res
+      })
   }
 }
 

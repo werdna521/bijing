@@ -1,49 +1,37 @@
-class User {
+const Adapter = require('../Adapter')
 
-  constructor(client, options) {
-    this.client = client
-    this.options = options
+const BASE_URL = {
+  'profile': '/api/Binusmaya/ProfileDB/V1/Profile/Profile/GetEmailBinusianID',
+  'login': '/api/BinusMobile/Student/V1/Login/Login/GetStudentLoginDetail',
+  'photo': '/api/Base/V1/BinusianPhoto/BinusianPhoto/get'
+}
+
+class User extends Adapter {
+
+  constructor(client) {
+    super(client)
+    this.baseURL = BASE_URL
   }
 
-  getEmailBinusianId() {
-    const API_PATH = '/api/Binusmaya/ProfileDB/V1/Profile/Profile/GetEmailBinusianID'
-    return this.client.$http.post(API_PATH, {}, {
-        headers: this._headers()
-      })
-      .then(response => response.data)
-      .catch(err => {
-        throw new Error(err.response.data.error_description)
-      })
+  getBinusianId(payload = {}) {
+    const { accessToken } = payload
+    this.requiresAccessToken(accessToken)
+
+    return this.client.$http.post(this.url('', 'profile'), {}, this.headers())
   }
 
-  getUserLoginDetail() {
-    const API_PATH = '/api/BinusMobile/Student/V1/Login/Login/GetStudentLoginDetail'
+  getUserLoginDetail(payload = {}) {
+    const { accessToken } = payload
+    this.requiresAccessToken(accessToken)
 
-    return this.client.$http.post(API_PATH, {}, {
-        headers: this._headers()
-      })
-      .then(response => response.data)
-      .catch(err => {
-        throw new Error(err.response.data.error_description)
-      })
+    return this.client.$http.post(this.url('', 'login'), {}, this.headers())
   }
 
-  getBinusianPhoto() {
-    const API_PATH = '/api/Base/V1/BinusianPhoto/BinusianPhoto/get'
+  getBinusianPhoto(payload = {}) {
+    const { accessToken } = payload
+    this.requiresAccessToken(accessToken)
 
-    return this.client.$http.post(API_PATH, {}, {
-        headers: this._headers()
-      })
-      .then(response => response.data)
-      .catch(err => {
-        throw new Error(err.response.data.error_description)
-      })
-  }
-
-  _headers() {
-    return {
-      Authorization: `Bearer ${this.options.accessToken}`
-    }
+    return this.client.$http.post(this.url('', 'photo'), {}, this.headers())
   }
 
 }
