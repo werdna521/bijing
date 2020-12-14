@@ -1,6 +1,5 @@
 class Request {
-  // * REQUEST BUILDER -> build encrypted request
-  // * currently only supports enkerip
+  // * REQUEST BUILDER -> build encrypted request with enkerip
 
   // * install enkerip
   constructor(enkerip) {

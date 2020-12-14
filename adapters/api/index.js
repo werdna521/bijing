@@ -12,23 +12,22 @@ class Api {
 
     this.options = {
       isBlank(key) {
-        return isBlank(this[key]);
+        return isBlank(this[key])
       },
       validate(keys, message) {
         keys.forEach((key) => {
           if (this.isBlank(key)) {
-            throw new Error(message);
+            throw new Error(message)
           }
-        });
+        })
       },
       toParams() {
         return {
           accessToken: this.accessToken
-        };
-      }
+        }
+      },
+      fetchOptions: {}
     }
-
-    this.options.fetchOptions = {}
 
     Object.keys(options).forEach((key) => {
       if (this._validOptionKeys().includes(key)) {

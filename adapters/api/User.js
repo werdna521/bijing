@@ -7,7 +7,7 @@ class User {
 
   getEmailBinusianId() {
     const API_PATH = '/api/Binusmaya/ProfileDB/V1/Profile/Profile/GetEmailBinusianID'
-    return this.client.$axios.post(API_PATH, {}, {
+    return this.client.$http.post(API_PATH, {}, {
         headers: this._headers()
       })
       .then(response => response.data)
@@ -19,7 +19,7 @@ class User {
   getUserLoginDetail() {
     const API_PATH = '/api/BinusMobile/Student/V1/Login/Login/GetStudentLoginDetail'
 
-    return this.client.$axios.post(API_PATH, {}, {
+    return this.client.$http.post(API_PATH, {}, {
         headers: this._headers()
       })
       .then(response => response.data)
@@ -31,7 +31,7 @@ class User {
   getBinusianPhoto() {
     const API_PATH = '/api/Base/V1/BinusianPhoto/BinusianPhoto/get'
 
-    return this.client.$axios.post(API_PATH, {}, {
+    return this.client.$http.post(API_PATH, {}, {
         headers: this._headers()
       })
       .then(response => response.data)

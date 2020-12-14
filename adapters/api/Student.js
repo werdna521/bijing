@@ -40,7 +40,7 @@ class Student {
       userId
     })
 
-    return this.client.$axios.post(API_PATH,
+    return this.client.$http.post(API_PATH,
         requestBody, {
           headers: this._headers()
         })
@@ -81,7 +81,7 @@ class Student {
       studentType
     })
 
-    return this.client.$axios.post(API_PATH,
+    return this.client.$http.post(API_PATH,
         requestBody, {
           headers: this._headers()
         })
@@ -122,7 +122,7 @@ class Student {
       roleID
     }, ["roleID"])
 
-    return this.client.$axios.post(API_PATH,
+    return this.client.$http.post(API_PATH,
         requestBody, {
           headers: this._headers()
         })

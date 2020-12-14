@@ -9,10 +9,6 @@ class Assignment {
     this.options = options
   }
 
-  sayHello() {
-    console.log('hello from assignment')
-  }
-
   getListAssignmentByType({
     acadCareer,
     assignmentTypeId,
@@ -56,7 +52,7 @@ class Assignment {
       userId
     })
 
-    return this.client.$axios.post(API_PATH,
+    return this.client.$http.post(API_PATH,
         requestBody, {
           headers: this._headers()
         })

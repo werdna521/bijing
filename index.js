@@ -1,9 +1,8 @@
-const Auth = require('./adapters/auth')
+const Auth = require('./adapters/Auth')
 const Api = require('./adapters/api')
 const Enkerip = require('enkerip')
+const HTTP = require('./helpers/http');
 const Request = require('./helpers/request')
-const UserAgentHandler = require('./helpers/useragent/handler')
-const axios = require('axios');
 const AVAILABLE_ADAPTERS = {
   auth: Auth,
   api: Api
@@ -13,10 +12,10 @@ class Bijing {
   constructor(options = {}) {
     this.$options = {}
 
-    if (!options.baseUrl) {
+    if (!options.baseURL) {
       throw new Error('`baseUrl` option is required')
     } else {
-      this.$options.baseUrl = options.baseUrl
+      this.$options.baseURL = options.baseURL
     }
 
     if (!options.clientSecret1) {
@@ -39,12 +38,7 @@ class Bijing {
 
     // * plugin and mixin installation
     this.$request = new Request(enkerip)
-    this.$axios = axios.create({
-      baseURL: this.$options.baseUrl,
-      headers: {
-        'User-Agent': new UserAgentHandler().getIosUserAgent({})
-      }
-    })
+    this.$http = new HTTP(this.$options.baseURL)
   }
 
   useAdapter(name, options = {}) {
