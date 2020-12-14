@@ -1,4 +1,6 @@
-const { isBlank } = require('../util')
+const {
+  isBlank
+} = require('../util')
 
 class Assignment {
 
@@ -11,9 +13,16 @@ class Assignment {
     console.log('hello from assignment')
   }
 
-  getListAssignmentByType({acadCareer, assignmentTypeId, classNbr, strm, studentType, userId}){
+  getListAssignmentByType({
+    acadCareer,
+    assignmentTypeId,
+    classNbr,
+    strm,
+    studentType,
+    userId
+  }) {
     const API_PATH = "/api/BinusMobile/Student/V1/Assignment/Assignment/GetListAssignmentByType"
-    
+
     if (isBlank(acadCareer)) {
       throw new Error('Please set valid `acadCareer`')
     }
@@ -48,10 +57,9 @@ class Assignment {
     })
 
     return this.client.$axios.post(API_PATH,
-      requestBody,
-      {
-        headers: this._headers()
-      })
+        requestBody, {
+          headers: this._headers()
+        })
       .then(response => response.data)
       .catch(err => {
         throw new Error(err.response.data.error_description)
@@ -59,9 +67,9 @@ class Assignment {
   }
 
   _headers() {
-      return {
-          Authorization: `Bearer ${this.options.accessToken}`
-      }
+    return {
+      Authorization: `Bearer ${this.options.accessToken}`
+    }
   }
 }
 

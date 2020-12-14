@@ -1,17 +1,17 @@
 module.exports = {
-    isObject: (obj) => {
-        return (obj instanceof Object) && !(Array.isArray(obj))
-    },
+  isObject: (obj) => {
+    return (obj instanceof Object) && !(Array.isArray(obj))
+  },
 
-    isString: (str) => {
-        return (typeof str === 'string')
-    },
+  isString: (str) => {
+    return (typeof str === 'string')
+  },
 
-    isUndefined: (thing) => {
-        return (typeof thing === 'undefined')
-    },
+  isUndefined: (thing) => {
+    return (typeof thing === 'undefined')
+  },
 
-    isBlank: (obj) => {
-        return (typeof obj === 'undefined') || (obj === null) || (obj === '')
-    },
+  isBlank: (obj) => {
+    return (typeof obj === 'undefined') || (obj === null) || (obj === '')
+  },
 }

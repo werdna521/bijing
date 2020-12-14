@@ -1,10 +1,12 @@
-const { isBlank } = require('../util')
+const {
+  isBlank
+} = require('../util')
 const Assignment = require('./Assignment')
 const Student = require('./Student')
 const User = require('./User')
 
 class Api {
-    
+
   constructor(client, options) {
     this.client = client
 
@@ -48,7 +50,7 @@ class Api {
     return new Promise(resolve => resolve())
   }
 
-  _validOptionKeys () {
+  _validOptionKeys() {
     return ['accessToken'];
   }
 }

@@ -3,3 +3,4 @@
 # The presence of these lockfiles can cause conflicts between NPM and Yarn
 package-lock.json
 yarn-lock.json
+.vscode/settings.json

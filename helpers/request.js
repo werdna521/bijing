@@ -23,9 +23,9 @@ class Request {
 
   // * do encryption while ignoring every keys in blocklist
   doEncryption(key, payload, blocklist) {
-    return blocklist.find(list => list === key) 
-      ? payload[key] 
-      : this.enkerip.encrypt(payload[key])
+    return blocklist.find(list => list === key) ?
+      payload[key] :
+      this.enkerip.encrypt(payload[key])
   }
 }
 

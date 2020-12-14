@@ -1,4 +1,6 @@
-const { isBlank } = require('../util')
+const {
+  isBlank
+} = require('../util')
 
 class Student {
 
@@ -7,7 +9,12 @@ class Student {
     this.options = options
   }
 
-  getStudentCourseData({acadCareer, emplId, strm, userId}) {
+  getStudentCourseData({
+    acadCareer,
+    emplId,
+    strm,
+    userId
+  }) {
     const API_PATH = '/api/Oracle/General/V1/General/General/GetCourseDataStudent'
 
     if (isBlank(acadCareer)) {
@@ -34,17 +41,21 @@ class Student {
     })
 
     return this.client.$axios.post(API_PATH,
-      requestBody,
-      {
-        headers: this._headers()
-      })
+        requestBody, {
+          headers: this._headers()
+        })
       .then(response => response.data)
       .catch(err => {
         throw new Error(err.response.data.error_description)
       })
   }
 
-  getStudentEventReminder({acadCareer, emplId, institution, studentType}) {
+  getStudentEventReminder({
+    acadCareer,
+    emplId,
+    institution,
+    studentType
+  }) {
     const API_PATH = '/api/BinusMobile/Student/V1/Schedule/Schedule/GetEventReminder'
 
     if (isBlank(acadCareer)) {
@@ -71,17 +82,21 @@ class Student {
     })
 
     return this.client.$axios.post(API_PATH,
-      requestBody,
-      {
-        headers: this._headers()
-      })
+        requestBody, {
+          headers: this._headers()
+        })
       .then(response => response.data)
       .catch(err => {
         throw new Error(err.response.data.error_description)
       })
   }
 
-  getStudentGPA({binusianId, acadCareer, emplId, roleID}) {
+  getStudentGPA({
+    binusianId,
+    acadCareer,
+    emplId,
+    roleID
+  }) {
     const API_PATH = '/api/Oracle/LMS/V1/GPA/GPA/GetStudentGPA'
 
     if (isBlank(binusianId)) {
@@ -108,10 +123,9 @@ class Student {
     }, ["roleID"])
 
     return this.client.$axios.post(API_PATH,
-      requestBody,
-      {
-        headers: this._headers()
-      })
+        requestBody, {
+          headers: this._headers()
+        })
       .then(response => response.data)
       .catch(err => {
         throw new Error(err.response.data.error_description)
@@ -119,9 +133,9 @@ class Student {
   }
 
   _headers() {
-      return {
-          Authorization: `Bearer ${this.options.accessToken}`
-      }
+    return {
+      Authorization: `Bearer ${this.options.accessToken}`
+    }
   }
 
 }
